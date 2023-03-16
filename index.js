@@ -3,7 +3,7 @@ import { Client, GatewayIntentBits } from 'discord.js';
 
 dotenv.config();
 const token = process.env.DISCORD_BOT_TOKEN;
-const channelId = '1085875010549334036';
+const channelId = process.env.DISCORD_CHANNEL_ID;
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
