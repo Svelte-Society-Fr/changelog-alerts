@@ -9,9 +9,9 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.login(token);
 
-client.on('ready', () => {
-  console.log('Connected');
-
+client.on('ready', async () => {
   const channel = client.channels.cache.get(channelId);
-  channel.send('coucou');
+  await channel.send('coucou');
+
+  client.destroy();
 });
