@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 import { Client, GatewayIntentBits } from 'discord.js';
 
-import { getChangelog } from './lib.js';
+import { getChangelog } from './utils.js';
 
 dotenv.config();
 const token = process.env.DISCORD_BOT_TOKEN;
