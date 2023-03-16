@@ -16,4 +16,6 @@ jobs:
       - name: Check for new releases
         env:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
+          DISCORD_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node index.js

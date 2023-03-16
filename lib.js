@@ -1,6 +1,6 @@
 import { Octokit } from '@octokit/rest';
 
-const token = process.env.GITHUB_PERSONAL_ACCESS_TOKEN;
+const token = process.env.GITHUB_REPO_TOKEN;
 
 const octokit = new Octokit({
   auth: token,
