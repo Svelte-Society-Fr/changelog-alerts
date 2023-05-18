@@ -20,6 +20,8 @@ Tracks updates in the changelogs of Svelte and SvelteKit repos, and send a messa
 
 ### Locally
 
+> Don't forget to `npm i`.
+
 3. Copy-paste the `.env-template` file as `.env`, and fill the different environment variables, as described earlier.
 
 4. Run
