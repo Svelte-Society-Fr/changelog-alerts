@@ -23,6 +23,9 @@ export default function (project) {
         .then(blob => {
           const previous = JSON.parse(blob);
 
+          console.log('Previous', previous.length);
+          console.log('Data', data.length);
+
           return data.filter(item => !previous.includes(item.version));
         })
         .catch(() => [data[0]]);

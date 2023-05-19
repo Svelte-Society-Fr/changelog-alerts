@@ -17,6 +17,8 @@ client.on('ready', async () => {
 
   const patches = (await Promise.all(repos.map(getUpdates))).flat();
 
+  console.log('patches', patches.length);
+
   const embeds = patches.map(format);
 
   for (let embed of embeds) {
