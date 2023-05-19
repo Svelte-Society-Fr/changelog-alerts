@@ -3,12 +3,18 @@ export default [
     name: 'SvelteKit',
     owner: 'sveltejs',
     repo: 'kit',
-    path: 'https://raw.githubusercontent.com/sveltejs/kit/master/packages/kit/CHANGELOG.md',
+    path: 'packages/kit/CHANGELOG.md',
+    color: 'd2d6e1',
+    thumbnail:
+      'https://kit.svelte.dev/_app/immutable/assets/svelte-kit-machine.3af040cb.png',
   },
   {
     name: 'Svelte',
     owner: 'sveltejs',
     repo: 'svelte',
-    path: 'https://raw.githubusercontent.com/sveltejs/svelte/master/CHANGELOG.md',
+    path: 'CHANGELOG.md',
+    color: 'ff3e00',
+    thumbnail:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Svelte_Logo.svg/1200px-Svelte_Logo.svg.png',
   },
 ];

@@ -1,18 +1,13 @@
-import { parse } from 'marked';
-import { JSDOM } from 'jsdom';
 import { readFile, writeFile } from 'node:fs/promises';
 
-const parserByRepo = {
-  svelte: html => {
-    const document = new JSDOM(html).window.document;
-    const sections = document.querySelectorAll('h2');
-    const data = document.querySelector('h2 + ul, h3 + ul').textContent;
-  },
-  kit: html => html,
-};
+const rawUrl = 'https://raw.githubusercontent.com';
+const branch = 'master';
 
-export default function ({ name, owner, repo, path }) {
-  return fetch(path)
+export default function (project) {
+  const { owner, repo, path } = project;
+  const url = [rawUrl, owner, repo, branch, path].join('/');
+
+  return fetch(url)
     .then(r => r.text())
     .then(d => {
       const data = d
@@ -21,7 +16,7 @@ export default function ({ name, owner, repo, path }) {
         .map(s => {
           const version = s.split('\n')[0];
 
-          return { name, version, md: `## ${s}` };
+          return { version, md: `## ${s}`, ...project };
         });
 
       const p = readFile(`latest/${repo}-latest.json`).then(blob => {
@@ -38,15 +33,6 @@ export default function ({ name, owner, repo, path }) {
       });
 
       return p;
-      // console.log(
-      //   'data',
-      //   data.map(d => d.version),
-      // );
-
-      // const version = document.querySelector('h2').textContent;
-      // const data = document.querySelector('h2 + ul, h3 + ul').textContent;
-
-      // console.log(data);
     })
     .catch(() => []);
 }

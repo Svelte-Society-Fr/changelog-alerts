@@ -3,6 +3,7 @@ import { Client, GatewayIntentBits } from 'discord.js';
 
 import repos from './repos.js';
 import getUpdates from './getUpdates.js';
+import format from './format.js';
 
 dotenv.config();
 const token = process.env.DISCORD_BOT_TOKEN;
@@ -15,11 +16,12 @@ client.on('ready', async () => {
   const channel = client.channels.cache.get(channelId);
 
   try {
-    const patches = await Promise.all(repos.map(getUpdates));
-    console.log('PATCHES', patches);
-    // for (let patch of patches.flat().filter(Boolean)) {
-    //   await channel.send(patch.md);
-    // }
+    const patches = (await Promise.all(repos.map(getUpdates))).flat();
+    const embeds = patches.map(format);
+
+    for (let embed of embeds) {
+      await channel.send({ embeds: [embed] });
+    }
   } catch (e) {
     console.error(e);
   }
