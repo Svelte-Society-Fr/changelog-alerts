@@ -19,7 +19,7 @@ export default function (project) {
           return { version, md: `## ${s}`, ...project };
         });
 
-      const p = readFile(`latest/${repo}-latest.json`)
+      const p = readFile(`versions/${repo}-latest.json`)
         .then(blob => {
           const previous = JSON.parse(blob);
 
@@ -29,7 +29,7 @@ export default function (project) {
 
       p.finally(() => {
         writeFile(
-          `latest/${repo}-latest.json`,
+          `versions/${repo}-latest.json`,
           JSON.stringify(data.map(d => d.version)),
         );
       });
