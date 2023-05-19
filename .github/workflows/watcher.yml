@@ -1,6 +1,7 @@
 name: Check for new releases
 on:
-  workflow_dispatch
+  schedule:
+    - cron:  '* */3 * * *'
 
 jobs:
   check-releases:
