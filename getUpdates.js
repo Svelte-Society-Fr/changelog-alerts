@@ -28,7 +28,10 @@ export default function (project) {
 
           return data.filter(item => !previous.includes(item.version));
         })
-        .catch(() => [data[0]]);
+        .catch(e => {
+          console.log('No artifact found', e);
+          return [data[0]];
+        });
 
       p.finally(() => {
         writeFile(
