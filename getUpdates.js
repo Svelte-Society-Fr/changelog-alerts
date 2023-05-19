@@ -19,11 +19,13 @@ export default function (project) {
           return { version, md: `## ${s}`, ...project };
         });
 
-      const p = readFile(`latest/${repo}-latest.json`).then(blob => {
-        const previous = JSON.parse(blob);
+      const p = readFile(`latest/${repo}-latest.json`)
+        .then(blob => {
+          const previous = JSON.parse(blob);
 
-        return data.filter(item => !previous.includes(item.version));
-      });
+          return data.filter(item => !previous.includes(item.version));
+        })
+        .catch(() => []);
 
       p.finally(() => {
         writeFile(
