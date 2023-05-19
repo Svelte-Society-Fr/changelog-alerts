@@ -10,9 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@octokit/rest": "^19.0.7",
     "discord.js": "^14.8.0",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "jsdom": "^22.0.0",
+    "marked": "^5.0.2"
   },
   "type": "module"
 }

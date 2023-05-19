@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv';
 import { Client, GatewayIntentBits } from 'discord.js';
 
 import repos from './repos.js';
-import { getChangelog } from './utils.js';
+import getUpdates from './getUpdates.js';
 
 dotenv.config();
 const token = process.env.DISCORD_BOT_TOKEN;
@@ -15,10 +15,11 @@ client.on('ready', async () => {
   const channel = client.channels.cache.get(channelId);
 
   try {
-    const patches = await Promise.all(repos.map(getChangelog));
-    for (let patch of patches.filter(Boolean)) {
-      await channel.send(patch);
-    }
+    const patches = await Promise.all(repos.map(getUpdates));
+    console.log('PATCHES', patches);
+    // for (let patch of patches.flat().filter(Boolean)) {
+    //   await channel.send(patch.md);
+    // }
   } catch (e) {
     console.error(e);
   }
