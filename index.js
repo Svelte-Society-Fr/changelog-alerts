@@ -15,16 +15,12 @@ client.login(token);
 client.on('ready', async () => {
   const channel = client.channels.cache.get(channelId);
 
-  try {
-    const patches = (await Promise.all(repos.map(getUpdates))).flat();
+  const patches = (await Promise.all(repos.map(getUpdates))).flat();
 
-    const embeds = patches.map(format);
+  const embeds = patches.map(format);
 
-    for (let embed of embeds) {
-      await channel.send({ embeds: [embed] });
-    }
-  } catch (e) {
-    console.error(e);
+  for (let embed of embeds) {
+    await channel.send({ embeds: [embed] });
   }
   client.destroy();
 });
