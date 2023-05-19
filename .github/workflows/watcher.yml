@@ -10,9 +10,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18.x'
+          node-version: '20.x'
       - name: Install dependencies
         run: npm install
+      - name: Download artifact
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          search_artifacts: true
+          if_no_artifact_found: warn
       - name: Check for new releases
         env:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
