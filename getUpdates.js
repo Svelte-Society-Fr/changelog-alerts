@@ -19,7 +19,7 @@ export default function (project) {
           return { version, md: `## ${s}`, ...project };
         });
 
-      const p = readFile(`versions/${repo}-latest.json`)
+      const p = readFile(`./${repo}-latest.json`)
         .then(blob => {
           const previous = JSON.parse(blob);
 
