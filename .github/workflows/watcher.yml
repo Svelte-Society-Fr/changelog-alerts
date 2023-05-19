@@ -17,6 +17,7 @@ jobs:
         id: download-artifact
         uses: dawidd6/action-download-artifact@v2
         with:
+          name: 'versions'
           search_artifacts: true
           if_no_artifact_found: warn
       - name: Check for new releases
