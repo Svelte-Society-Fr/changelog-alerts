@@ -25,7 +25,7 @@ export default function (project) {
 
           return data.filter(item => !previous.includes(item.version));
         })
-        .catch(() => []);
+        .catch(() => data);
 
       p.finally(() => {
         writeFile(
