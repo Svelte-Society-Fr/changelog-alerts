@@ -4,10 +4,22 @@ import { JSDOM } from 'jsdom';
 const githubUrl = 'https://github.com';
 
 function formatList(items) {
-  return items
+  const cleanItems = items
     ?.map(i => i.replace(/ \(#\d+\)$/, '')) // remove inner links to MRs
     .map(i => `- ${i}`)
-    .join('\n');
+
+  if (!cleanItems) return undefined;
+
+  let result = "";
+  for (const item of cleanItems) {
+    if (result.length + item.length < 950) {
+      result += `\n${item}`
+    } else {
+      result += `\n- **CHANGELOG TRUNCATED: please see full changelog for more details**`;
+      break;
+    }
+  }
+  return result;
 }
 
 export default function ({
