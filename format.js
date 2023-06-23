@@ -4,10 +4,16 @@ import { JSDOM } from 'jsdom';
 const githubUrl = 'https://github.com';
 
 function formatList(items) {
-  return items
+  let s = items
     ?.map(i => i.replace(/ \(#\d+\)$/, '')) // remove inner links to MRs
     .map(i => `- ${i}`)
     .join('\n');
+
+  if (s.length > 1024) {
+    s = s.slice(0, 1020) + '...';
+  }
+
+  return s;
 }
 
 export default function ({
