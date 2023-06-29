@@ -5,8 +5,7 @@ export default [
     repo: 'kit',
     path: 'packages/kit/CHANGELOG.md',
     color: 'd2d6e1',
-    thumbnail:
-      'https://kit.svelte.dev/_app/immutable/assets/svelte-kit-machine.3456a340.avif',
+    thumbnail: 'https://kit.svelte.dev/images/twitter-thumbnail.jpg',
   },
   {
     name: 'Svelte',
