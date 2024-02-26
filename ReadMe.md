@@ -1,6 +1,6 @@
 # Svelte alerts
 
-Tracks updates in the changelogs of Svelte and SvelteKit repos, and send a message in a dedicated channel on a Discord Server.
+Tracks updates in the changelogs of Svelte and SvelteKit repos and send a message in a dedicated channel on a Discord Server.
 
 > Note: Currently only tracking SvelteKit main repo
 
